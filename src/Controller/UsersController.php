@@ -52,15 +52,18 @@ class UsersController extends AppController
     }
 
     public function add(){
+        $this->autoRender = FALSE;
         $user = $this->Users->newEntity(['id' => $this->request->getQuery('id'), 'name' => $this->request->getQuery('name')]);
         $this->Users->save($user);
     }
 
     public function delete(){
+        $this->autoRender = FALSE;
         $this->Users->deleteAll(['id' => $this->request->getQuery('id')]);
     }
 
     public function edit(){
+        $this->autoRender = FALSE;
         $user = $this->Users->find('all',[
             'conditions' => [
                 'id' => $this->request->getQuery('id')
